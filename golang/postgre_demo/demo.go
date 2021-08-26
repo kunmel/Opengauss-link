@@ -15,6 +15,11 @@ func connectDB() {
 		fmt.Println(err)
 	}
 }
+
+func closeDB() {
+	db.Close()
+}
+
 func queryDB() {
 	rows, err := db.Query("SELECT * FROM company2")
 	if err != nil {
@@ -35,7 +40,9 @@ func queryDB() {
 		fmt.Println("id = ", id, "\nname = ", name, "\nage = ", age, "\naddress = ", address, "\nsalary", salary, "\n-----------")
 	}
 }
+
 func main() {
 	connectDB()
 	queryDB()
+	closeDB()
 }
